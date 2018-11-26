@@ -1,0 +1,12 @@
+html body {
+    background-image: url('./media/background1.png');
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.page{
+    height:100vh;
+    width:100vw;
+}

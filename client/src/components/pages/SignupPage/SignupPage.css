@@ -1,0 +1,11 @@
+.signupPage{
+    height:80vh;
+}
+
+.label {
+    color:white;
+}
+
+.button.is-link {
+    background-color:#42646d;
+}
