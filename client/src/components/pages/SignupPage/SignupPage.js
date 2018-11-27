@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Route, Redirect } from 'react-router'
+import { withRouter } from 'react-router-dom';
 import axios from "axios";
 import "../../../styles/global.css";
 import "./SignupPage.css"
 import 'bulma/css/bulma.css'
+import { fromByteArray } from "ipaddr.js";
 
-export default class SignupPage extends Component {
+class SignupPage extends Component {
     state = {
         username: "",
         email: "",
@@ -23,7 +24,7 @@ export default class SignupPage extends Component {
         axios.post('/api/newUser', {content: this.state})
         .then((result) => {
             return(
-                <Redirect push to="/" />
+                 this.props.history.push('/') 
             )
         });
     }
@@ -70,3 +71,5 @@ export default class SignupPage extends Component {
         )   
     };
 };
+
+export default withRouter(SignupPage);

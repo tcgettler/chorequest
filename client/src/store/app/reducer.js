@@ -1,7 +1,7 @@
 import { actionTypes } from './actions';
 
 const getInitialState = () => ({
-    isLoggedIn: false,
+    isLoggedIn: true,
     user: {
         username: "",
         role: "",

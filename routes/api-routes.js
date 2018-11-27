@@ -1,10 +1,9 @@
-const passport = require('passport'), 
-    LocalStrategy = require('passport-local').Strategy;
 const db = require('../models/Index.js');
-
-module.exports = function (app) {
+const express = require("express");
+const router = express.Router();
+const passport = require("passport")
     /*********************************************Signin API Calls **********************************************/
-    app.post('/api/newUser', function (req, res) {
+    router.post('/api/newUser', function (req, res) {
         db.User.create({
           username: req.body.content.username,
           email:req.body.content.email,
@@ -15,26 +14,10 @@ module.exports = function (app) {
             res.json(error);
         });
     });
-
-    app.post('/api/login',
-        passport.authenticate('local-signin'),
-        function (req, res) {
-        console.log('test')
-        res.json({
-            user: req.user,
-            success: true
-        });
-    });
-
+    /*********************************************************End of signin api calls **************************************************/
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
         return next();
         res.redirect('/');
     }
-
-    app.get('/api/login', isLoggedIn, function(req, res){
-        res.json(req.user);
-    })
-    /*********************************************************End of signin api calls **************************************************/
-  
-}
+module.exports = router;

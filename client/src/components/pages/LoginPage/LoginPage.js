@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Route, Redirect } from 'react-router'
+
 import axios from "axios";
 import "./LoginPage.css";
 import 'bulma/css/bulma.css';
@@ -17,9 +17,8 @@ class LoginPage extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const login = {username: this.state.username, password: this.state.password};
-        console.log(login);
-        axios.post('/api/login', {content: login})
+        
+        axios.post('/api/login', (this.state))
         .then((result) => {
             console.log(result)
             return(
