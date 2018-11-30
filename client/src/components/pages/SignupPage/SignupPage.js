@@ -30,8 +30,8 @@ class SignupPage extends Component {
     }
     render(){
         return (
-            <div className="columns is-mobile is-multiline is-centered is-vcentered loginPage">
-                <div className="column is-four-fifths is-offset-1">
+            <div className="columns is-mobile is-multiline is-centered is-vcentered signupPage">
+                <div className="column is-10">
                     <div className="container">
                         <div className="field">
                             <label className="label">Username</label>

@@ -1,9 +1,2 @@
-export const actionTypes = {
+export const SET_IS_LOGGED_IN = "SET_IS_LOGGED_IN";
 
-};
-
-const actions = {
-    onClick: (payload = {}) => ({ type: actionTypes.SET_Username, payload}),
-};
-
-export default actions;

@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  p {
+    margin-top: 0px;
+  }
+  
+  .bodyClass {
+  }
+  
+  .menuClass {
+    background-color: #f8f0c1;
+    padding: 15px;
+    height: 100vh;
+    box-shadow: 5px 0px black;
+  }

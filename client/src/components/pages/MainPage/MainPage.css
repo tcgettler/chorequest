@@ -1,0 +1,18 @@
+.menu {
+    background-color: #584149;
+    height:5%;
+    box-shadow: 5px 5px black;
+}
+
+.mainPage {
+    height:100vh;
+}
+
+a{
+    margin-left:50%;
+    color:#ffd55f;
+}
+
+a:hover {
+    color: white;
+}

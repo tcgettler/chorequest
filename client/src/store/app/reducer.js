@@ -1,7 +1,5 @@
-import { actionTypes } from './actions';
-
+import {SET_IS_LOGGED_IN} from "../../store/app/actions.js";
 const getInitialState = () => ({
-    isLoggedIn: true,
     user: {
         username: "",
         role: "",
@@ -18,7 +16,8 @@ const getInitialState = () => ({
 
 const app = (state = getInitialState(), { type, payload }) => {
     switch (type) {
-        case actionTypes.SET_Username:
+        case SET_IS_LOGGED_IN:
+        console.log("STATE", state, payload)
             return {
                 ...state,
                 ...payload,

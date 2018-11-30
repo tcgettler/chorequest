@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { withRouter } from 'react-router-dom';
 import axios from "axios";
 import "./LoginPage.css";
 import 'bulma/css/bulma.css';
@@ -20,18 +20,21 @@ class LoginPage extends Component {
         
         axios.post('/api/login', (this.state))
         .then((result) => {
-            console.log(result)
+            console.log(result);
+            if (result.status === 200 ){
+                return
+            }
             return(
-                console.log('it worked')
-                // <Redirect push to="/home" />
+                this.props.history.push('/mainpage') 
             )
+            
         });
     }
 
     render(){
         return (
             <div className="columns is-mobile is-multiline is-centered is-vcentered loginPage">
-                <div className="column is-four-fifths">
+                <div className="column is-10">
                     <div className="container">
                         <img src={logo} />
                         <div className="field">
@@ -69,5 +72,5 @@ class LoginPage extends Component {
     };
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);
 
