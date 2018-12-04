@@ -17,18 +17,12 @@ class LoginPage extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        
         axios.post('/api/login', (this.state))
         .then((result) => {
-            console.log(result);
-            if (result.status === 200 ){
-               
-            }
-            this.props.bindActionCreators(result);
+            
             return(
                 this.props.history.push('/mainpage') 
             )
-            
         });
     }
 

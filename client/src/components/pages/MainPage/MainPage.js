@@ -6,7 +6,7 @@ import logo from "./ChoreQuestMenuLogo.png";
 import DisplayCard from './displaycard.js';
 import Guild from './guild.js';
 import './MainPage.css';
-import styles from './styles.css';
+import './styles.css';
 import money from './money.png';
 
 export default class MainPage extends Component {
@@ -23,7 +23,12 @@ export default class MainPage extends Component {
             description: "",
             cost: 0
         },
+        createStore: {
+            itemName: "",
+            cost: 0,
+        },
         createGuild: "",
+        memberName: ""
     }
     componentWillMount() {
         // sets the initial state
@@ -55,11 +60,16 @@ export default class MainPage extends Component {
         this.setState({[event.target.name]: event.target.value})
     }
 
+    addMembers = (input) => {
+        console.log(input);
+        console.log('click');
+    }
+
     renderCards() {
         console.log(this.state.menuOption);
             switch(this.state.menuOption) {
                 case 'Guild':
-                    return <Guild guildmaster={this.props.user.username}/>
+                    return <Guild onChange={this.handleChange} memberState={this.state.memberName} addMembers={this.addMembers} guildmaster={this.props.user.username}/>
                 case 'Quests':
                     return <DisplayCard value="Quests" />;
                 case 'Encounters':
@@ -81,6 +91,25 @@ export default class MainPage extends Component {
         })
     }
 
+    createShopItem = (event) => {
+        event.preventDefault();
+        axios.post('/api/createGuild', {itemName: this.state.store.createItem, cost: this.state.store.cost})
+        .then((results)=> {
+
+        }).catch((error)=>{
+
+        });
+    }
+
+    createQuest = (event) => {
+        event.preventDefault();
+        axios.post( '/api/' + (this.state.menuOption), {questName: this.state.createChore.chore, area: this.state.createChore.area, reward: this.state.createChore.cost})
+        .then((results) =>{
+
+        }).catch((error)=>{
+
+        }); 
+    }
     render(){
         console.log(this.props.user)
         return(
@@ -110,7 +139,7 @@ export default class MainPage extends Component {
                                 <input class="input" type="number" placeholder="Reward" />
                             </div>
                             <div className="column is-offset-4 is-3">
-                                <button className="button submitButton">Create</button>
+                                <button onClick={this.createQuest} className="button submitButton">Create</button>
                             </div>
                         </div>
                         : ''}
@@ -123,20 +152,17 @@ export default class MainPage extends Component {
                                     <i className="fas fa-caret-down" > </i>
                                 </div>
                             </div>
-                            <div className="column is-5 has-text-centered">
-                                <input className="input" type="text" placeholder="Chore"/>
-                            </div>
-                            <div className="column is-4">
-                                <input className="input" type="text" placeholder="Area" />
+                            <div className="column is-8 has-text-centered">
+                                <input className="input" type="text" name="createStore.itemName" placeholder="Item"/>
                             </div>
                             <div className="column is-2">
-                                <img src={money} alt="money"/>
+                                <img src={money} alt="Cost"/>
                             </div>
                             <div className="column is-3">
-                                <input class="input" type="number" placeholder="Reward" />
+                                <input class="input" type="number" name="createStore.cost" placeholder="Price" />
                             </div>
                             <div className="column is-offset-4 is-3">
-                                <button className="button submitButton">Create</button>
+                                <button onClick={this.createShopItem} className="button submitButton">Create</button>
                             </div>
                         </div>
                         : ''}
@@ -194,8 +220,8 @@ export default class MainPage extends Component {
                     </OffCanvas>
                     <div className="columns is-mobile is-centered is-multiline">
                         <div className="column is-10 is-offset-1"> 
-                            {this.props.guild.guildname ? <div></div> : <button onClick={this.openCreate} className="button guildmasterBtn"><i className="fas fa-plus"></i>Create Guild</button> }
-                            {this.props.user.role === 'guildmaster' && this.state.menuOption != 'Approvals'? <button onClick={this.openCreate} className="button guildmasterBtn"><i className="fas fa-plus"></i>Create {this.state.menuOption}</button> : <div></div>}
+                            {this.props.guild.guildname ? '' : <button onClick={this.openCreate} className="button guildmasterBtn"><i className="fas fa-plus"></i>Create Guild</button> }
+                            {this.props.user.role === 'guildmaster' && this.state.menuOption !== 'Approvals' && this.state.menuOption !== 'Guild'? <button onClick={this.openCreate} className="button guildmasterBtn"><i className="fas fa-plus"></i>Create {this.state.menuOption}</button> : <div></div>}
                             {this.renderCards()}
                         </div>
                     </div>

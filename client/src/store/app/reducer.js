@@ -5,10 +5,12 @@ const getInitialState = () => ({
         username: "tmoney2090",
         role: "guildmaster",
         encounters: [],
-        bosses: [] 
+        bosses: [],
+        wallet: 0
     },
     guild: {
         guildname: "asdfasdfdsf",
+        guildmaster: 'tmoney2090',
         members: [],
         quests: [],
         store: [],

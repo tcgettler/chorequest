@@ -2,10 +2,12 @@ import React from "react";
 
 
 const Guild = (props) => {
-    console.log(props);
     return(
         <div>
-            <div className="columns is-mobile is-multiline">
+            <div className="columns is-mobile is-multiline guild">
+                <div className="column is-12 has-text-centered">
+                    <h3>Guild Name</h3>
+                </div>
                 <div className="column is-3 is-vcentered">
                     <div className="type has-text-centered">
                         <i className="fas fa-broom fa-3x imageType" > </i>
@@ -17,7 +19,10 @@ const Guild = (props) => {
                 <div className="column is-8">
                     Guild Members:
                 </div>
-                <button className="button submitButton">Add Members</button>
+                <div className="column is-4">
+                <input onChange={props.onChange} value={props.memberState} className="input" type="text" name="addMember" placeholder="Add Member" />
+                <button onClick={props.addMembers} className="button submitButton">Add Members</button>
+                </div>
             </div>
         </div>
     )
