@@ -5,7 +5,7 @@
 }
 
 .mainPage {
-    height:100vh;
+ 
 }
 
 a{
@@ -15,4 +15,89 @@ a{
 
 a:hover {
     color: white;
+}
+
+li {
+    font-size: 1.5rem;
+    margin-bottom:3%;
+}
+
+ul{
+    margin-left:-90%;
+    color:white;
+
+}
+
+i {
+    margin-right:5%;
+}
+
+.menuClass{
+    z-index: 20;
+}
+
+.displayCard{
+    border-style: solid;
+    border-color: darkgray;
+    background-image: radial-gradient(#6f5e56,#433631);
+    box-shadow: 5px 5px black;
+    border-width:.25rem;
+}
+
+.submitButton{
+    background-image: radial-gradient(red, darkred);
+    color:white;
+    border-color: darkgray;
+    box-shadow: 5px 5px black;
+}
+
+.guildmasterBtn {
+    background-image: radial-gradient(red, darkred);
+    color:white;
+    border-color: darkgray;
+    box-shadow: 5px 5px black;
+    width: 90vw;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.type {
+    background-image: radial-gradient(#6f5e56,#433631);
+    color:white;
+    border-style: solid;
+    border-color: darkgray;
+    box-shadow: 5px 5px black;
+    height:10vh;
+    width:20vw;
+}
+
+.imageType{
+    margin-top:20%;
+    color: #ffd55f;
+}
+
+.createModal{
+    border-style: solid;
+    border-color: darkgray;
+    background-image: radial-gradient(#6f5e56,#433631);
+    box-shadow: 5px 5px black;
+    border-width:.25rem;
+    height:30vh;
+    width:50vh;
+    margin-top:0;
+    margin-left: .5%;
+    margin-right: 0;
+    margin-bottom:0;
+}
+
+.columns:last-child {
+    margin-bottom: 0;
+}
+
+.footer{
+    background-color: #55444a;
+    padding: 0rem 0 0rem;
+    position:absolute;
+    bottom:0;
+    right:0;
 }

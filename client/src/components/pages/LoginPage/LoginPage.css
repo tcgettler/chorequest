@@ -6,3 +6,8 @@ label {
     color:white;
 }
 
+.button.is-link:hover, .button.is-link.is-hovered {
+    background-color: #42646d;
+    border-color: transparent;
+    color: #fff;
+}

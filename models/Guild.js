@@ -5,9 +5,39 @@ const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new TweetSchema object
 const GuildSchema = new Schema({
-  content: {
+  guildname: {
     type: String,
-    required: "You must include some content in your note"
+    required: "You must have a Guild Name"
+  },
+  guildmaster: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user"
+    },
+    {
+      type:Schema.Types.Username,
+      ref:"user"
+    },
+  ],
+  members:{
+      type: Schema.Types.ObjectId,
+      ref: "user"
+  },
+  quests: {
+    type: Schema.Types.ObjectId,
+    ref: "quest"
+  },
+  encounters: {
+    type: Schema.Types.ObjectId,
+    ref: "encounter"
+  },
+  bosses: {
+      type: Schema.Types.ObjectId,
+      ref: "boss"
+  },
+  shop: {
+    type: Schema.Types.ObjectId,
+    ref: "shop"
   }
 });
 

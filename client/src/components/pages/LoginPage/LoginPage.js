@@ -22,8 +22,9 @@ class LoginPage extends Component {
         .then((result) => {
             console.log(result);
             if (result.status === 200 ){
-                return
+               
             }
+            this.props.bindActionCreators(result);
             return(
                 this.props.history.push('/mainpage') 
             )

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new TweetSchema object
 const QuestSchema = new Schema({
-  questName: {
+  encounterName: {
     type: String,
     required: "You must include a name"
   },
@@ -15,10 +15,14 @@ const QuestSchema = new Schema({
   reward: {
     type: Number,
   },
+  assigned: {
+    type: Schema.Types.ObjectId,
+    ref: "user"
+  }
 });
 
 // This creates our model from the above schema, using Mongoose's model method
-var Quests = mongoose.model('Quest',QuestSchema);
+var Encounter = mongoose.model('Encounter',QuestSchema);
 
 // Export the Tweet model
-module.exports = Quests;
+module.exports = Encounter;

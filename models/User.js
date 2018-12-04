@@ -20,6 +20,10 @@ var UserSchema = new Schema({
     trim: true,
     required: "Password is Required"
   },
+  wallet: {
+    type: Number,
+    default: 0
+  }
 });
 
 UserSchema.pre('save', function(next) {

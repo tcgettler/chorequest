@@ -4,21 +4,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new TweetSchema object
-const QuestSchema = new Schema({
-  questName: {
+const ShopSchema = new Schema({
+  itemName: {
     type: String,
     required: "You must include a name"
   },
-  area: {
-    type: String,
-  },
-  reward: {
+  cost: {
     type: Number,
   },
 });
 
 // This creates our model from the above schema, using Mongoose's model method
-var Quests = mongoose.model('Quest',QuestSchema);
+var Shop = mongoose.model('Shop', ShopSchema);
 
 // Export the Tweet model
-module.exports = Quests;
+module.exports = Shop;

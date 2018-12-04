@@ -15,7 +15,7 @@
   }
   
   .menuClass {
-    background-color: #f8f0c1;
+   background-image: radial-gradient(red, darkred);
     padding: 15px;
     height: 100vh;
     box-shadow: 5px 0px black;

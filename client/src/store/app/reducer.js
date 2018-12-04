@@ -1,13 +1,14 @@
 import {SET_IS_LOGGED_IN} from "../../store/app/actions.js";
 const getInitialState = () => ({
     user: {
-        username: "",
-        role: "",
+        userId:"5bfc2837900d7d49e4a55bce",
+        username: "tmoney2090",
+        role: "guildmaster",
         encounters: [],
         bosses: [] 
     },
     guild: {
-        guildname: "",
+        guildname: "asdfasdfdsf",
         members: [],
         quests: [],
         store: [],

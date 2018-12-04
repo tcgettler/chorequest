@@ -8,22 +8,23 @@ import MainPage from '../pages/MainPage/MainPage';
 import {SET_IS_LOGGED_IN} from "../../store/app/actions.js";
 import '../../styles/global.css';
 import 'bulma/css/bulma.css';
+import money from "../pages/MainPage/money.png";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      
           <div className="columns">
-          
-            <Route exact path='/' component={LoginPage} />
+            <Route exact path='/' render={(props) => <LoginPage bindActionCreators={bindActionCreators} />} />
             <Route exact path='/signup' component={SignupPage} />
-            
-            <Route exact path='/mainpage' component={MainPage} />
-          
-            
+            <Route exact path='/mainpage'  render={(props) => <MainPage  user={this.props.user} guild={this.props.guild} />} />
+            <footer class="footer">
+              <div class="content has-text-right">
+                  <img src={money} alt="money"/>
+                    100G
+              </div>
+          </footer>
           </div>
-      
       </BrowserRouter>
     );
   }
