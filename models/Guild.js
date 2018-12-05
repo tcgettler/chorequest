@@ -25,7 +25,7 @@ const GuildSchema = new Schema({
   },
   quests: {
     type: Schema.Types.ObjectId,
-    ref: "quest"
+    ref: "quests"
   },
   encounters: {
     type: Schema.Types.ObjectId,

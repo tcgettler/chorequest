@@ -42,6 +42,7 @@ i {
     background-image: radial-gradient(#6f5e56,#433631);
     box-shadow: 5px 5px black;
     border-width:.25rem;
+    margin-bottom:5%;
 }
 
 .submitButton{
@@ -91,7 +92,7 @@ i {
 }
 
 .columns:last-child {
-    margin-bottom: 0;
+    margin-bottom: 10%;
 }
 
 .footer{

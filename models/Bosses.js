@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new TweetSchema object
 const BossSchema = new Schema({
-  encounterName: {
+  bossName: {
     type: String,
     required: "You must include a name"
   },

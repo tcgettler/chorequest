@@ -11,18 +11,18 @@ const DisplayCard = (props) => {
                     </div>
                 </div>
                 <div className="column is-5 has-text-centered">
-                    <h5>Dusting</h5>
+                    <h5>{props.name}</h5>
                 </div>
                 <div className="column is-4">
-                    <h5>Living Room</h5>
+                    <h5>{props.area}</h5>
                 </div>
                 <div className="column is-2">
                     <img src={money} alt="money"/>
                 </div>
                 <div className="column is-6">
-                    100G
+                    {props.reward}G
                 </div>
-                <button className="button submitButton">Complete</button>
+                {props.storebutton ? <button className="button submitButton"> Purchase </button> : <button className="button submitButton"> Complete </button>}
             </div>
             
         </div>

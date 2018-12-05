@@ -14,19 +14,11 @@ export default class MainPage extends Component {
         isMenuOpened: false,
         isModalOpened: false,
         menuOption: "Guild",
-        createChore: {
-            chore:"",
-            area: "",
-            reward: 0
-        },
-        createReward: {
-            description: "",
-            cost: 0
-        },
-        createStore: {
-            itemName: "",
-            cost: 0,
-        },
+        chore:"",
+        area: "",
+        reward: 0,
+        itemName: "",
+        cost: 0,
         createGuild: "",
         memberName: ""
     }
@@ -71,13 +63,13 @@ export default class MainPage extends Component {
                 case 'Guild':
                     return <Guild onChange={this.handleChange} memberState={this.state.memberName} addMembers={this.addMembers} guildmaster={this.props.user.username}/>
                 case 'Quests':
-                    return <DisplayCard value="Quests" />;
+                    return (<div>{this.props.guild.quests.map((quest, index) => (<DisplayCard key={index} name={quest.questName} area={quest.area} reward={quest.reward} />))}</div>);
                 case 'Encounters':
-                    return <DisplayCard value="Encounters" />;
+                return (<div>{this.props.user.encounters.map((encounter, index) => (<DisplayCard key={index} name={encounter.encounterName} area={encounter.area} reward={encounter.reward} />))}</div>);
                 case 'Bosses':
-                    return <DisplayCard value="Bosses" />;
+                return (<div>{this.props.user.bosses.map((boss, index) => (<DisplayCard key={index} name={boss.bossName} area={boss.area} reward={boss.reward} />))}</div>);
                 case 'Shop':
-                    return <DisplayCard value="Shop" />;
+                return (<div>{this.props.guild.store.map((store, index) => (<DisplayCard key={index} name={store.itemName} storebutton="true" reward={store.cost} />))}</div>);
                default:
                 return 'foo';
             }
@@ -95,7 +87,8 @@ export default class MainPage extends Component {
         event.preventDefault();
         axios.post('/api/createGuild', {itemName: this.state.store.createItem, cost: this.state.store.cost})
         .then((results)=> {
-
+            console.log(results);
+            this.setState({isMOdalOpened: !this.state.isModalOpened});
         }).catch((error)=>{
 
         });
@@ -103,9 +96,11 @@ export default class MainPage extends Component {
 
     createQuest = (event) => {
         event.preventDefault();
-        axios.post( '/api/' + (this.state.menuOption), {questName: this.state.createChore.chore, area: this.state.createChore.area, reward: this.state.createChore.cost})
+        console.log(this.state.createChore)
+        console.log(`/api/${this.state.menuOption}`)
+        axios.post( `/api/${this.state.menuOption}`, {questName: this.state.chore, area: this.state.area, reward: this.state.reward, guildId: this.props.guild.guildId})
         .then((results) =>{
-
+            console.log(results);
         }).catch((error)=>{
 
         }); 
@@ -127,16 +122,16 @@ export default class MainPage extends Component {
                                 </div>
                             </div>
                             <div className="column is-5 has-text-centered">
-                                <input onChange={this.handleChange} className="input" type="text" placeholder="Chore"/>
+                                <input onChange={this.handleChange} value={this.state.chore} name="chore" className="input" type="text" placeholder="Chore"/>
                             </div>
                             <div className="column is-4">
-                                <input className="input" type="text" placeholder="Area" />
+                                <input onChange={this.handleChange} className="input" value={this.state.area} name="area" type="text" placeholder="Area" />
                             </div>
                             <div className="column is-2">
                                 <img src={money} alt="money"/>
                             </div>
                             <div className="column is-3">
-                                <input class="input" type="number" placeholder="Reward" />
+                                <input onChange={this.handleChange} class="input" value={this.state.reward} name="reward" type="number" placeholder="Reward" />
                             </div>
                             <div className="column is-offset-4 is-3">
                                 <button onClick={this.createQuest} className="button submitButton">Create</button>
